@@ -1,0 +1,31 @@
+[package]
+name = "dioxus-viz"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# dioxus-fullstack = { version = "0.4.3", features = ["ssr"] }
+dioxus-fullstack = { path = "../dioxus/packages/fullstack", features = ["ssr"] }
+futures-util = "0.3.30"
+http = "1.0.0"
+http-body-util = "0.1.0"
+serde = "1.0.195"
+tokio-stream = { version = "0.1.14", default-features = false, features = ["sync"] }
+tracing = "0.1.40"
+viz = { version = "0.8.0", features = ["serve"] }
+
+[dev-dependencies]
+dioxus = { path = "../dioxus/packages/dioxus" }
+dioxus-fullstack = { path = "../dioxus/packages/fullstack", features = ["ssr"] }
+tokio = { version = "1.35", features = ["full"] }
+http-body-util = "0.1.0"
+
+[features]
+default = ["hot-reload", "viz/websocket"]
+router = ["dioxus-fullstack/dioxus-router"]
+hot-reload = ["dioxus-fullstack/hot-reload"]
+web = ["dioxus-fullstack/dioxus-web"]
+desktop = ["dioxus-fullstack/dioxus-desktop"]
+ssr = ["dioxus-fullstack/ssr"]
+default-tls = ["dioxus-fullstack/default-tls"]
+rustls = ["dioxus-fullstack/rustls"]
